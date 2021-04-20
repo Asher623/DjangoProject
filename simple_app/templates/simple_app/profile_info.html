@@ -1,0 +1,9 @@
+{% extends 'simple_app/base.html' %}
+{% block content %}
+<div class="jumbotron">
+
+  <h2>{{ user.username }}</h2>
+  <a href="{% url 'profile_edit' %}"><input type="button" value="Edit profile"></a>
+  <p>{{user.email}}</p>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/static/css/blognew.css">
+
+    <!-- Alternative to Bootstrap 3 Glyphicons -->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    </head>
+  <body class='loader'>
+
+    <nav class="navbar navbar-expand-lg bg-light techfont">
+      <div class="container">
+        <div class="navbar-nav align-items-center">
+
+          <a class="nav-item nav-link" href="{% url 'list_post' %}"><h2>Posts</h2></a>
+        </div>
+
+          {% if user.is_authenticated %}
+
+              <a class = "bookmark_favourite" href="{% url 'favourite_list' %}">
+                <svg class="bi bi-bookmarks" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M7 13l5 3V4a2 2 0 00-2-2H4a2 2 0 00-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V4a1 1 0 00-1-1H4a1 1 0 00-1 1v10.234z" clip-rule="evenodd"/>
+                <path d="M14 14l-1-.6V2a1 1 0 00-1-1H4.268A2 2 0 016 0h6a2 2 0 012 2v12z"/>
+              </svg></a>
+              <div class="dropdown">
+              <a data-toggle="dropdown" class='aborder' href="" >
+                {% if user.picture %}
+                <img class="rounded-circle"  src="{% static "user.picture" %}" style="border-radius: 50%;width: 60px;height: 60px;"> </a>
+                {%else%}
+                <img class="rounded-circle"  src="{% static "images/man.jpg" %}" style="border-radius: 50%;width: 45px;height: 45px;"> </a>
+
+                {%endif%}
+
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+
+                <div class="">
+                  <h4><a class="dropdown-item" href="{% url 'profile_info' %}">{{user.username}}</a></h4>
+                </div>
+                <hr>
+                <a class="dropdown-item" href="{% url 'your_posts'%}">{{user.username}} posts</a>
+                <a class="dropdown-item" href="{% url 'create_view' %}">Create post</a>
+                <a class="dropdown-item" href="{% url 'favourite_list' %}">Favourites</a>
+                <hr>
+                <a class="dropdown-item" href="https://www.github.com">Github</a>
+                <a class="dropdown-item" href="https://www.linkedin.com">LinkedIn</a>
+                <a class="dropdown-item" href="{% url 'index' %}">About</a>
+                <hr>
+                <a class="dropdown-item" href="{% url 'user_logout' %}">Log out</a>
+              </div>
+            </div>
+
+
+          {% else %}
+            <div class="navbar-nav align-items-center ml-auto">
+              <a class="nav-item nav-link" href="{% url 'user_login' %}" aria-label="Sign in">Login</a>
+              <a class="nav-item nav-link" href="{% url 'registration' %}" aria-label="Registration">Registration</a>
+            </div>
+          {% endif %}
+
+      </div>
+    </nav>
+
+
+    {# The actual blog posts#}
+
+                      {% block content %}
+                      {% endblock %}
+
+
+
+    {# SCRIPTS#}
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" ></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <script src="{% static 'js/blog.js' %}"></script>
+
+
+  </body>
+</html>

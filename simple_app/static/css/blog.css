@@ -1,0 +1,93 @@
+.jumbotron{
+  background: white;
+  width: 100px;
+}
+
+img{
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* remove extra space below image */
+    margin-right: 40px;
+    }
+
+ul {
+  list-style-type: none;
+  margin-bottom: 40px;
+ }
+ li{
+  margin-bottom: 40px;
+ }
+.text_inside{
+  float: left;
+  line-height: 15px;
+  margin-left: 300px;
+  margin-bottom: 50px;
+  width: 800px;
+}
+.text_title_date{
+  margin-left: 100px;
+
+}
+.bookmark_favourite{
+  margin-left: 930px;
+}
+a{
+  color: black;
+}
+svg{
+  color: black;
+}
+
+.comments_div{
+  padding: 0px 10px;
+  margin-bottom: 12;
+
+}
+.marker{
+  margin-top:30px;
+}
+.list_items{
+  margin-top:100px;
+}
+
+li{
+  width: 55%;
+}
+.form-control{
+  width:500px;
+}
+.list_favourites{
+  width: 500px;
+}
+
+.jumbotron_post{
+  position: absolute;
+    width: 650px;
+
+    top: 20%;
+    left: 28%;
+    margin-left: -50px; /* margin is -0.5 * dimension */
+    margin-top: -25px;
+    font-family: "Times New Roman", Times, serif;
+
+
+}
+.author_date{
+  margin-top: 100px;
+}
+
+#title_post{
+  float: left;
+}
+.author_date{
+  padding: 0px 10px;
+  left: 0%;
+}
+#post_list_image{
+  float: left;
+  width:250px;
+  height:220px;
+}
+.aborder{
+  outline : none;
+}

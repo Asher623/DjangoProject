@@ -1,0 +1,11 @@
+{% extends 'simple_app/base.html' %}
+{% block content %}
+<div class="jumbotron">
+  <form method="POST">
+    {% csrf_token %}
+    <p>Are you want to delete this item ?</p>
+    <input type="submit" value="Yes" />
+    <a href="/">Cancel </a>
+  </form>
+</div>
+{% endblock %}

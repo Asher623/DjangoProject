@@ -1,0 +1,45 @@
+{% extends 'simple_app/base.html' %}
+{% block content %}
+
+<div class="list_items">
+
+
+<ul>
+  {% for post in posts %}
+    <li style="line-height: 3;">
+
+      <div class="text_inside">
+        {% if post.image_link%}
+          <img id='post_list_image' src="{{post.image_link}}" alt='https://cdn.spacetelescope.org/archives/images/screen/heic1919a.jpg'>
+        {%else%}
+        <img id='post_list_image' src="https://cdn.spacetelescope.org/archives/images/screen/heic1919a.jpg" alt='media/images/man'>
+        {% endif%}
+        <div class="text_title_date">
+          <h4  style="font-size:25px;"><a href="{% url 'post_detail' id=post.id %}">{{post.title}} </a></h4>
+          <p style="font-size:13px; line-height: 16px;">{{ post.text|truncatewords:16}}</p>
+
+          <a style="font-size:15px;" href="{% url 'users_post_list' id=post.id %}">{{ post.author }}</a>
+
+          <p class ="text-muted" style="font-size:12px;">{{ post.create_date }}</p>
+
+          <div class="marker">
+            {% if is_favourite %}
+              <a href="{% url 'add_favourite_post' id=post.id %}" class="favoriteMarker"><svg class="bi bi-bookmark-fill" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M3 3a2 2 0 012-2h6a2 2 0 012 2v12l-5-3-5 3V3z" clip-rule="evenodd"/>
+                </svg></a>
+            {% else %}
+              <a href="{% url 'add_favourite_post' id=post.id %}" class="favoriteMarker"><svg class="bi bi-bookmark" width="1.5em" height="1.5em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 00-2-2H5a2 2 0 00-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 00-1-1H5a1 1 0 00-1 1v10.234z" clip-rule="evenodd"/>
+                </svg></a>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </li>
+    {% empty %}
+    {% block list_block %}
+    {%endblock%}
+  {% endfor %}
+  </ul>
+</div>
+{% endblock %}
